@@ -5,11 +5,10 @@ from openprocurement.api.roles import RolesFromCsv
 from openprocurement.api.models import (
     ListType,
     Model,
-    Organization,
+    BusinessOrganization,
     IsoDateTimeType,
-    )
-from openprocurement.agreement.cfaua.models.unitprice\
-    import UnitPrice
+)
+from openprocurement.agreement.cfaua.models.unitprice import UnitPrice
 from openprocurement.agreement.cfaua.models.parameter import Parameter
 from openprocurement.agreement.cfaua.validation import validate_parameters_uniq
 
@@ -24,7 +23,7 @@ class Contract(Model):
     status = StringType(
         choices=['active', 'unsuccessful']
     )
-    suppliers = ListType(ModelType(Organization))
+    suppliers = ListType(ModelType(BusinessOrganization))
     unitPrices = ListType(ModelType(UnitPrice))
     awardID = StringType()
     bidID = StringType()
